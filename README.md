@@ -19,9 +19,14 @@ Currently, the functions available are:
 -   `biAny`
 -   `biNone`
 -   `biOnlyOne`
-    <br><br>
 
-## Examples
+## <br>Install
+
+```bash
+npm i predicate-hof
+```
+
+## <br>Examples
 
 I didn't define the predicates below for simplicity-sake, so you can just use your imagination on how they work :)
 

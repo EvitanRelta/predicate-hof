@@ -1,10 +1,15 @@
 {
     "name": "predicate-hof",
+    "author": "EvitanRelta",
+    "description": "TypeScript higher-order-functions to combine or negate predicates without evaluating them.",
     "version": "0.1.0",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
     "scripts": {
         "pretty": "prettier --write .",
         "test": "jest",
-        "test-watch": "jest --watch"
+        "test-watch": "jest --watch",
+        "build": "tsc -p tsconfig.build.json"
     },
     "devDependencies": {
         "@types/jest": "^28.1.6",

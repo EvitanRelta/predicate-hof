@@ -10,7 +10,7 @@
         "pretty": "prettier --write .",
         "test": "jest",
         "test-watch": "jest --watch",
-        "build": "tsc -p tsconfig.build.json",
+        "build": "rm -rf ./dist && tsc -p tsconfig.build.json",
         "build-publish": "npm run build && npm publish"
     },
     "devDependencies": {

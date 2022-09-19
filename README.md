@@ -2,7 +2,7 @@
 
 A collections of higher-order-functions to combine and negate predicates, without evaluating said predicates.
 
-**<ins>Fully written</ins>** in TypeScript
+**<ins>Fully written</ins>** in TypeScript, and no dependencies.
 
 Currently, the functions available are:
 
@@ -12,13 +12,25 @@ Currently, the functions available are:
 -   `none`,&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&hairsp;&hairsp;&hairsp;&hairsp; true only if **_NONE_** of the predicates return true.
 -   `onlyOne`,&thinsp;&thinsp;&hairsp;&hairsp;&hairsp;true if **_ONLY ONE_** of the predicates return true.
 
-<br>And their binary-predicate counter-parts:
+<br>They all work with predicates taking in **<ins>any number</ins>** of arguments, as long as all the predicates take in the same _(or subtype/supertype)_ parameters for example:
 
--   `biNot`
--   `biAll`
--   `biAny`
--   `biNone`
--   `biOnlyOne`
+```typescript
+interface Parent {
+    x: number
+}
+interface Child extends Parent {
+    y: string
+}
+
+const parentPredicate = (x: Parent) => true
+const childPredicate = (x: Child) => true
+
+// Both works:
+all(parentPredicate, childPredicate)
+all(childPredicate, parentPredicate)
+```
+
+> If you're getting type errors, check the [**"Fixing type errors"**](#fixing-type-errors) section below
 
 ## <br>Install
 
@@ -59,7 +71,7 @@ not(wasAssassinated)(epstein) // :^)
 ### <br>Here's examples for binary-predicates
 
 ```typescript
-import { biAny } from 'predicate-hof'
+import { any } from 'predicate-hof'
 
 isLessThan(1, 3) // true, 1 < 3
 isEqual(1, 1) // true, 1 === 1
@@ -67,4 +79,31 @@ isEqual(1, 1) // true, 1 === 1
 const isLessThanOrEqual = biAny(isLessThan, isEqual)
 isLessThanOrEqual(1, 5) // true, 1 <= 5
 isLessThanOrEqual(1, 1) // true, 1 <= 1
+```
+
+## <br>Fixing type errors
+
+If the predicate parameters don't match exactly, TypeScript might complain:
+
+```typescript
+const numOnly = (n: number) => true
+const numAndStr = (n: number, str: string) => true
+
+all(numOnly, numAndStr) // numAndStr gives type error
+```
+
+<br>A fix would be to ensure the predicate that accepts the most parameters is the first to be passed:
+
+```typescript
+// 'numAndStr' takes more parameters,
+// so it should be at the front.
+all(numAndStr, numOnly)
+```
+
+<br>If that doesn't work, or is not possible to do, you can specify the generic type _(which is an array of the parameter type(s))_:
+
+```typescript
+// number is 1st argument
+// string is 2nd argument
+all<[number, string]>(numOnly, numAndStr)
 ```

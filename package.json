@@ -3,7 +3,7 @@
     "author": "EvitanRelta",
     "description": "TypeScript higher-order-functions to combine or negate predicates without evaluating them.",
     "repository": "github:EvitanRelta/predicate-hof",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "scripts": {

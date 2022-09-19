@@ -1,5 +1,0 @@
-export { biAll } from './biAll'
-export { biAny } from './biAny'
-export { biNone } from './biNone'
-export { biNot } from './biNot'
-export { biOnlyOne } from './biOnlyOne'

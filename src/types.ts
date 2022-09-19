@@ -4,7 +4,7 @@
  *
  * @template T Parameter type.
  */
-export type Predicate<T> = (x: T) => boolean
+export type Predicate<T extends any[]> = (...args: T) => boolean
 
 /**
  * A Higher-Order-Function that combines multiple unary-predicates _(with the
@@ -15,7 +15,7 @@ export type Predicate<T> = (x: T) => boolean
  * @param predicates The unary-predicates to combine.
  * @returns A unary-predicate, with the same parameter-type as those in `predicates`.
  */
-export type PredicateCombiner = <T>(...predicates: Predicate<T>[]) => Predicate<T>
+export type PredicateCombiner = <T extends any[]>(...predicates: Predicate<T>[]) => Predicate<T>
 
 /**
  * A Higher-Order-Function that takes in a unary-predicate, and returns a
@@ -25,4 +25,4 @@ export type PredicateCombiner = <T>(...predicates: Predicate<T>[]) => Predicate<
  * @param predicate A unary-predicate.
  * @returns A unary-predicate, with the same parameter-type as `predicate`.
  */
-export type PredicateOperator = <T>(predicate: Predicate<T>) => Predicate<T>
+export type PredicateOperator = <T extends any[]>(predicate: Predicate<T>) => Predicate<T>

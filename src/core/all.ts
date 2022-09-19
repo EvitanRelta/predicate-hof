@@ -1,8 +1,8 @@
 import type { PredicateCombiner } from '../types'
 
 /**
- * Combines multiples unary-predicates _(with the same argument-type)_ into a
- * single unary-predicate that returns true only if _**ALL**_ of them returns true.
+ * Combines multiples predicates _(with the same parameter-type(s))_ into a
+ * single predicate that returns true only if _**ALL**_ of them returns true.
  *
  * @example
  * ```typescript
@@ -11,8 +11,8 @@ import type { PredicateCombiner } from '../types'
  * isPositiveEven(1)  // false, only positive
  * isPositiveEven(-2) // false, only even
  * ```
- * @param predicates The unary-predicates to combine.
- * @returns The combined unary-predicate.
+ * @param predicates The predicates to combine.
+ * @returns The combined predicate.
  */
 export const all: PredicateCombiner =
     (...predicates) =>

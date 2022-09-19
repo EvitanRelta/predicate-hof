@@ -3,8 +3,8 @@ import { any } from './any'
 import { not } from './not'
 
 /**
- * Combines multiples unary-predicates _(with the same argument-type)_ into a
- * single unary-predicate that returns true only if _**NONE**_  of them returns true.
+ * Combines multiples predicates _(with the same parameter-type(s))_ into a
+ * single predicate that returns true only if _**NONE**_  of them returns true.
  *
  * @example
  * ```typescript
@@ -13,7 +13,7 @@ import { not } from './not'
  * isNotPositiveNorEven(1)  // false, positive
  * isNotPositiveNorEven(-2) // false, even
  * ```
- * @param predicates The unary-predicates to combine.
- * @returns The combined unary-predicate.
+ * @param predicates The predicates to combine.
+ * @returns The combined predicate.
  */
 export const none: PredicateCombiner = (...predicates) => not(any(...predicates))

@@ -16,5 +16,5 @@ import type { PredicateCombiner } from '../types'
  */
 export const all: PredicateCombiner =
     (...predicates) =>
-    (input) =>
-        predicates.every((f) => f(input))
+    (...inputs) =>
+        predicates.every((f) => f(...inputs))

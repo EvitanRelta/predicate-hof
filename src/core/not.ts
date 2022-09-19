@@ -12,4 +12,7 @@ import type { PredicateOperator } from '../types'
  * @param predicate The unary-predicate.
  * @returns A unary-predicate that returns the negated result of `predicate`.
  */
-export const not: PredicateOperator = (predicate) => (input) => !predicate(input)
+export const not: PredicateOperator =
+    (predicate) =>
+    (...inputs) =>
+        !predicate(...inputs)

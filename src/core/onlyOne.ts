@@ -17,10 +17,10 @@ import type { PredicateCombiner } from '../types'
  */
 export const onlyOne: PredicateCombiner =
     (...predicates) =>
-    (input) => {
+    (...inputs) => {
         let hasTrue = false
         for (const f of predicates) {
-            if (!f(input)) continue
+            if (!f(...inputs)) continue
             if (hasTrue) return false
             hasTrue = true
         }

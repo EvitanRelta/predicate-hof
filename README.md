@@ -76,7 +76,7 @@ import { any } from 'predicate-hof'
 isLessThan(1, 3) // true, 1 < 3
 isEqual(1, 1) // true, 1 === 1
 
-const isLessThanOrEqual = biAny(isLessThan, isEqual)
+const isLessThanOrEqual = any(isLessThan, isEqual)
 isLessThanOrEqual(1, 5) // true, 1 <= 5
 isLessThanOrEqual(1, 1) // true, 1 <= 1
 ```
